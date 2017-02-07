@@ -5,10 +5,11 @@ function plot_graph(h, diff1, diff2)
     
     %[1e-18, 2e-1, 1e-17, 1]
     
-    c = ['r' 'b' 'g' 'y' 'm' 'k'];   % colors
-    disp(size(diff1,1));
+    c = ['r' 'b'];   % colors
+
     for i=1:size(diff1,1)
-       loglog(h, diff1(i,:), strcat(c(i),'-'), h, diff2(i,:), strcat(c(i),'--')); 
+       loglog(h, diff1(i,:), strcat(c(i),'-'),...
+           h, diff2(i,:), strcat(c(i),'--')); 
        hold on;
     end
     
@@ -18,3 +19,5 @@ function plot_graph(h, diff1, diff2)
     xlabel('h');
     ylabel('errors');
     axis tight;
+    
+    saveas(gcf,'loglog-plot.png')
